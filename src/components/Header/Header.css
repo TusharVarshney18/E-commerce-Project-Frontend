@@ -1,3 +1,4 @@
+/* Header */
 .header {
   height: 34vw;
   width: 100%;
@@ -73,15 +74,16 @@
 
 @media (max-width: 750px) {
   .header {
-    height: 42vw;
+    height: 40vw; /* Adjust header height for smaller screens */
   }
   .header-contents {
-    max-width: 65%;
+    max-width: 70%; /* Decrease the maximum width of header content */
   }
   .header-contents p {
     display: none;
   }
   .header-contents button {
-    padding: 2vw 4vw;
+    padding: 3vw 5vw; /* Adjust padding for smaller screens */
+    font-size: max(2vw, 14px); /* Adjust font size */
   }
 }
