@@ -7,7 +7,7 @@ const Footer = () => {
     <div className="footer" id="footer">
       <div className="footer-content">
         <div className="footer-content-left">
-          <img src={assets.logo} alt="" />
+          <img src={assets.logoIcon} alt="" />
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
             nesciunt, incidunt aperiam iste ratione hic ea quos modi veniam ut,
@@ -33,7 +33,7 @@ const Footer = () => {
           <h2>Get in touch</h2>
           <ul>
             <li>+1-11-323213-1</li>
-            <li>contact@tomoto.com</li>
+            <li>contact@#Tomoto.com</li>
           </ul>
         </div>
       </div>
