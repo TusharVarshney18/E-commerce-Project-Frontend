@@ -38,3 +38,30 @@
 .place-order .cart-total button {
   margin-top: 30px;
 }
+
+/* Responsive design for mobile screens */
+@media (max-width: 768px) {
+  .place-order {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .place-order-left,
+  .place-order-right {
+    max-width: 100%; /* Make them take full width on mobile */
+  }
+
+  .place-order-left .title {
+    font-size: 24px; /* Adjust font size for smaller screens */
+  }
+
+  .place-order-left input {
+    padding: 8px; /* Adjust input padding for smaller screens */
+  }
+
+  .place-order-left .multiple-fields {
+    flex-direction: column; /* Stack fields vertically on small screens */
+    gap: 15px; /* Add more gap between stacked fields */
+  }
+}
