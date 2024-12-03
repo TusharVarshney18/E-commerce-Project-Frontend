@@ -22,7 +22,7 @@ const FoodItem = ({ id, name, price, description, image }) => {
       <div className="food-item-img-container">
         <img
           className="food-item-image"
-          src={`${url}/images/${image}`}
+          src={image.startsWith("http") ? image : `${url}/images/${image}`}
           alt={`${name} image`}
         />
 
