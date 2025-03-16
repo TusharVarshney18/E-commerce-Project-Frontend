@@ -370,13 +370,6 @@
 
 /* Mobile Styles */
 @media (max-width: 768px) {
-  .login-btn {
-    width: 100%;
-    padding: 0.8rem;
-    text-align: center;
-    margin: 1rem;
-  }
-
   .search-btn,
   .profile-btn {
     display: none;
@@ -385,6 +378,16 @@
   .cart-btn {
     width: 35px;
     height: 35px;
+  }
+
+  .login-btn {
+    padding: 0.4rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: auto;
+    height: 35px;
+    font-size: 0.85rem;
   }
 
   .cart-btn img {

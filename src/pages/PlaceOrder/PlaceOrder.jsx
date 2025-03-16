@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./PlaceOrder.css";
 import { StoreContext } from "../../Context/storeContext";
 import axios from "axios";
@@ -16,6 +16,7 @@ const PlaceOrder = () => {
   } = useContext(StoreContext);
 
   const navigate = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [data, setData] = useState({
     firstname: "",
@@ -42,8 +43,10 @@ const PlaceOrder = () => {
 
   const placeOrder = async (event) => {
     event.preventDefault();
+    if (isSubmitting) return;
 
     try {
+      setIsSubmitting(true);
       const orderItems = food_list
         .filter((item) => cartItems[item._id] > 0)
         .map((item) => ({
@@ -87,7 +90,7 @@ const PlaceOrder = () => {
             email: data.email,
             contact: data.phone,
           },
-          theme: { color: "#3399cc" },
+          theme: { color: "#ff4b2b" },
           handler: async (paymentResult) => {
             try {
               const verifyResponse = await axios.post(
@@ -102,21 +105,19 @@ const PlaceOrder = () => {
               );
 
               if (verifyResponse.data.success) {
-                setCartItem({}); // Clear cart after successful payment
+                setCartItem({});
                 navigate("/myorders");
               } else {
-                console.error(
-                  "Payment verification failed:",
-                  verifyResponse.data.message
-                );
+                alert("Payment verification failed. Please try again.");
               }
             } catch (error) {
               console.error("Error verifying payment:", error);
+              alert("Payment verification failed. Please try again.");
             }
           },
           modal: {
             ondismiss: () => {
-              console.log("Payment popup closed.");
+              setIsSubmitting(false);
             },
           },
         };
@@ -124,119 +125,180 @@ const PlaceOrder = () => {
         const rzp = new window.Razorpay(options);
         rzp.open();
       } else {
-        console.error("Order placement failed:", response.data.message);
+        alert("Order placement failed. Please try again.");
+        setIsSubmitting(false);
       }
     } catch (error) {
       console.error("Error placing order:", error);
+      alert("Failed to place order. Please try again.");
+      setIsSubmitting(false);
     }
   };
 
   return (
     <form onSubmit={placeOrder} className="place-order">
       <div className="place-order-left">
-        <p className="title">Delivery Information</p>
+        <h1 className="title">Delivery Information</h1>
+
         <div className="multiple-fields">
+          <div className="input-group">
+            <label className="input-label" htmlFor="firstname">
+              First Name
+            </label>
+            <input
+              required
+              id="firstname"
+              name="firstname"
+              onChange={onchangehandler}
+              value={data.firstname}
+              type="text"
+              placeholder="Enter your first name"
+            />
+          </div>
+          <div className="input-group">
+            <label className="input-label" htmlFor="lastname">
+              Last Name
+            </label>
+            <input
+              required
+              id="lastname"
+              name="lastname"
+              onChange={onchangehandler}
+              value={data.lastname}
+              type="text"
+              placeholder="Enter your last name"
+            />
+          </div>
+        </div>
+
+        <div className="input-group">
+          <label className="input-label" htmlFor="email">
+            Email Address
+          </label>
           <input
             required
-            name="firstname"
+            id="email"
+            name="email"
             onChange={onchangehandler}
-            value={data.firstname}
-            type="text"
-            placeholder="First Name"
-          />
-          <input
-            required
-            type="text"
-            name="lastname"
-            onChange={onchangehandler}
-            value={data.lastname}
-            placeholder="Last Name"
+            value={data.email}
+            type="email"
+            placeholder="Enter your email address"
           />
         </div>
-        <input
-          required
-          name="email"
-          onChange={onchangehandler}
-          value={data.email}
-          type="email"
-          placeholder="Email Address"
-        />
-        <input
-          required
-          name="street"
-          onChange={onchangehandler}
-          value={data.street}
-          type="text"
-          placeholder="Street"
-        />
-        <div className="multiple-fields">
+
+        <div className="input-group">
+          <label className="input-label" htmlFor="street">
+            Street Address
+          </label>
           <input
             required
-            name="city"
+            id="street"
+            name="street"
             onChange={onchangehandler}
-            value={data.city}
+            value={data.street}
             type="text"
-            placeholder="City"
-          />
-          <input
-            required
-            name="state"
-            onChange={onchangehandler}
-            value={data.state}
-            type="text"
-            placeholder="State"
+            placeholder="Enter your street address"
           />
         </div>
+
         <div className="multiple-fields">
+          <div className="input-group">
+            <label className="input-label" htmlFor="city">
+              City
+            </label>
+            <input
+              required
+              id="city"
+              name="city"
+              onChange={onchangehandler}
+              value={data.city}
+              type="text"
+              placeholder="Enter your city"
+            />
+          </div>
+          <div className="input-group">
+            <label className="input-label" htmlFor="state">
+              State
+            </label>
+            <input
+              required
+              id="state"
+              name="state"
+              onChange={onchangehandler}
+              value={data.state}
+              type="text"
+              placeholder="Enter your state"
+            />
+          </div>
+        </div>
+
+        <div className="multiple-fields">
+          <div className="input-group">
+            <label className="input-label" htmlFor="zipcode">
+              ZIP Code
+            </label>
+            <input
+              required
+              id="zipcode"
+              name="zipcode"
+              onChange={onchangehandler}
+              value={data.zipcode}
+              type="text"
+              placeholder="Enter ZIP code"
+            />
+          </div>
+          <div className="input-group">
+            <label className="input-label" htmlFor="country">
+              Country
+            </label>
+            <input
+              required
+              id="country"
+              name="country"
+              onChange={onchangehandler}
+              value={data.country}
+              type="text"
+              placeholder="Enter your country"
+            />
+          </div>
+        </div>
+
+        <div className="input-group">
+          <label className="input-label" htmlFor="phone">
+            Phone Number
+          </label>
           <input
             required
-            name="zipcode"
+            id="phone"
+            name="phone"
             onChange={onchangehandler}
-            value={data.zipcode}
-            type="text"
-            placeholder="Zip Code"
-          />
-          <input
-            required
-            name="country"
-            onChange={onchangehandler}
-            value={data.country}
-            type="text"
-            placeholder="Country"
+            value={data.phone}
+            type="tel"
+            placeholder="Enter your phone number"
           />
         </div>
-        <input
-          required
-          name="phone"
-          onChange={onchangehandler}
-          value={data.phone}
-          type="text"
-          placeholder="Phone"
-        />
       </div>
 
       <div className="place-order-right">
         <div className="cart-total">
-          <h2>Cart Total</h2>
-          <div>
-            <div className="cart-total-details">
-              <p>Subtotal</p>
-              <p>${CartGetTotalAmount()}</p>
-            </div>
-            <hr />
-            <div className="cart-total-details">
-              <p>Delivery fee</p>
-              <p>${CartGetTotalAmount() === 0 ? 0 : 2}</p>
-            </div>
-            <hr />
-            <div className="cart-total-details">
-              <b>Total</b>
-              <b>
-                ${CartGetTotalAmount() === 0 ? 0 : CartGetTotalAmount() + 2}
-              </b>
-            </div>
+          <h2>Order Summary</h2>
+          <div className="cart-total-details">
+            <p>Subtotal</p>
+            <p>₹{CartGetTotalAmount()}</p>
           </div>
-          <button type="submit">Proceed To Checkout</button>
+          <hr />
+          <div className="cart-total-details">
+            <p>Delivery Fee</p>
+            <p>₹{CartGetTotalAmount() === 0 ? 0 : 2}</p>
+          </div>
+          <hr />
+          <div className="cart-total-details">
+            <b>Total Amount</b>
+            <b>₹{CartGetTotalAmount() === 0 ? 0 : CartGetTotalAmount() + 2}</b>
+          </div>
+          <button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "Processing..." : "Proceed to Payment"}
+          </button>
         </div>
       </div>
     </form>
