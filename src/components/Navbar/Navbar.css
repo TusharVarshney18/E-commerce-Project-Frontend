@@ -435,3 +435,109 @@
     box-shadow: 0 0 0 0 rgba(255, 68, 68, 0);
   }
 }
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px 4px 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.scrolled .profile-info {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.profile-info img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.username {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.scrolled .username {
+  color: #333;
+}
+
+.profile-btn {
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.profile-btn:hover .profile-info {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.scrolled .profile-btn:hover .profile-info {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 8px;
+}
+
+.dropdown-header span {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333;
+}
+
+@media (prefers-color-scheme: dark) {
+  .profile-info {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .scrolled .profile-info {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .profile-btn:hover .profile-info {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .scrolled .profile-btn:hover .profile-info {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .dropdown-header {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .dropdown-header span {
+    color: #fff;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-info {
+    padding: 4px;
+  }
+
+  .username {
+    display: none;
+  }
+
+  .dropdown-header {
+    padding: 10px 12px;
+  }
+
+  .dropdown-header span {
+    font-size: 0.9rem;
+  }
+}

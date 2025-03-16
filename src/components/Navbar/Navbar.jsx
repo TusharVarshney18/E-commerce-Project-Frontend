@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./Navbar.css";
 import { assets } from "../../assets/assets";
@@ -9,12 +9,25 @@ const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [username, setUsername] = useState("");
   const { CartGetTotalAmount, token, setToken } = useContext(StoreContext);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (token) {
+      // Get username from localStorage or decode from token
+      const storedUsername = localStorage.getItem("username");
+      if (storedUsername) {
+        setUsername(storedUsername);
+      }
+    }
+  }, [token]);
+
   const logout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("username");
     setToken("");
+    setUsername("");
     navigate("/");
     setIsProfileOpen(false);
   };
@@ -92,11 +105,17 @@ const Navbar = ({ setShowLogin }) => {
                 aria-label="Toggle profile menu"
                 aria-expanded={isProfileOpen}
               >
-                <img src={assets.profile_icon} alt="Profile" />
+                <div className="profile-info">
+                  <img src={assets.profile_icon} alt="Profile" />
+                  <span className="username">{username || "User"}</span>
+                </div>
               </button>
               <div
                 className={`profile-dropdown ${isProfileOpen ? "show" : ""}`}
               >
+                <div className="dropdown-header">
+                  <span>Hello, {username || "User"}!</span>
+                </div>
                 <button
                   onClick={() => {
                     navigate("/myorders");
