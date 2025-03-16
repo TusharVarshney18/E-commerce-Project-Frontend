@@ -150,17 +150,25 @@
   animation: pulse 2s infinite;
 }
 
-/* Sign In Button */
-.sign-in-btn {
-  display: none;
-  padding: 0.6rem 1.2rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1.5px solid rgba(255, 255, 255, 0.8);
+/* Login Button */
+.login-btn {
+  padding: 0.6rem 1.5rem;
   border-radius: 50px;
-  color: white;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 500;
+  background: var(
+    --accent-gradient,
+    linear-gradient(90deg, #ff4b2b 0%, #ff416c 100%)
+  );
+  border: none;
+  color: white;
+  cursor: pointer;
   transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 75, 43, 0.3);
 }
 
 /* Profile Dropdown */
@@ -317,7 +325,7 @@
     height: 20px;
   }
 
-  .sign-in-btn {
+  .login-btn {
     display: block;
   }
 
@@ -353,6 +361,61 @@
   .navbar-menu {
     padding: 1rem;
     gap: 1.5rem;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .login-btn {
+    width: 100%;
+    padding: 0.8rem;
+    text-align: center;
+    margin: 1rem;
+  }
+
+  .search-btn,
+  .cart-btn,
+  .profile-btn {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .mobile-menu-btn span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: white;
+    margin: 2px 0;
+    transition: all 0.3s ease;
+  }
+
+  .scrolled .mobile-menu-btn span {
+    background: #333;
+  }
+
+  .mobile-menu-btn.active span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-menu-btn.active span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
   }
 }
 

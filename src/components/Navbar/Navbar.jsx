@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import PropTypes from "prop-types";
 import "./Navbar.css";
 import { assets } from "../../assets/assets";
 import { Link, useNavigate } from "react-router-dom";
@@ -74,8 +75,8 @@ const Navbar = ({ setShowLogin }) => {
           </Link>
 
           {!token ? (
-            <button className="sign-in-btn" onClick={() => setShowLogin(true)}>
-              Sign in
+            <button className="login-btn" onClick={() => setShowLogin(true)}>
+              Login
             </button>
           ) : (
             <div className="profile-menu">
@@ -111,6 +112,10 @@ const Navbar = ({ setShowLogin }) => {
       </div>
     </nav>
   );
+};
+
+Navbar.propTypes = {
+  setShowLogin: PropTypes.func.isRequired,
 };
 
 export default Navbar;
