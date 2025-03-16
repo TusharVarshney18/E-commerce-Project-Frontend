@@ -180,6 +180,21 @@
   position: relative;
 }
 
+.profile-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
 .profile-dropdown {
   position: absolute;
   top: 120%;
@@ -193,9 +208,10 @@
   visibility: hidden;
   transform: translateY(10px);
   transition: all 0.3s ease;
+  z-index: 1000;
 }
 
-.profile-menu:hover .profile-dropdown {
+.profile-dropdown.show {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -212,6 +228,9 @@
   background: none;
   border: none;
   cursor: pointer;
+  color: #333;
+  font-size: 0.95rem;
+  font-weight: 500;
 }
 
 .dropdown-item:hover {
@@ -221,11 +240,44 @@
 .dropdown-item img {
   width: 18px;
   height: 18px;
+  opacity: 0.8;
 }
 
-.dropdown-item span {
-  color: #333;
-  font-size: 0.9rem;
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  .profile-dropdown {
+    background: #1f1f1f;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .dropdown-item {
+    color: #fff;
+  }
+
+  .dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .dropdown-item img {
+    filter: invert(1);
+    opacity: 0.9;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .profile-dropdown {
+    position: fixed;
+    top: auto;
+    bottom: 20px;
+    right: 20px;
+    min-width: 180px;
+  }
+
+  .dropdown-item {
+    padding: 0.7rem 0.9rem;
+    font-size: 0.9rem;
+  }
 }
 
 /* Mobile Menu Button */
@@ -365,73 +417,6 @@
   .navbar-menu {
     padding: 1rem;
     gap: 1.5rem;
-  }
-}
-
-/* Mobile Styles */
-@media (max-width: 768px) {
-  .search-btn,
-  .profile-btn {
-    display: none;
-  }
-
-  .cart-btn {
-    width: 35px;
-    height: 35px;
-  }
-
-  .login-btn {
-    padding: 0.4rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: auto;
-    height: 35px;
-    font-size: 0.85rem;
-  }
-
-  .cart-btn img {
-    width: 18px;
-    height: 18px;
-  }
-
-  .mobile-menu-btn {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 35px;
-    height: 35px;
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    padding: 0;
-  }
-
-  .mobile-menu-btn span {
-    display: block;
-    width: 18px;
-    height: 2px;
-    background: white;
-    margin: 2px 0;
-    transition: all 0.3s ease;
-  }
-
-  .scrolled .mobile-menu-btn span {
-    background: #333;
-  }
-
-  .mobile-menu-btn.active span:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
-  }
-
-  .mobile-menu-btn.active span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .mobile-menu-btn.active span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
   }
 }
 

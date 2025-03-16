@@ -8,6 +8,7 @@ import { StoreContext } from "../../Context/storeContext";
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
   const { CartGetTotalAmount, token, setToken } = useContext(StoreContext);
   const navigate = useNavigate();
 
@@ -15,10 +16,15 @@ const Navbar = ({ setShowLogin }) => {
     localStorage.removeItem("token");
     setToken("");
     navigate("/");
+    setIsProfileOpen(false);
   };
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const toggleProfileMenu = () => {
+    setIsProfileOpen(!isProfileOpen);
   };
 
   const handleMenuClick = (menuItem) => {
@@ -80,16 +86,26 @@ const Navbar = ({ setShowLogin }) => {
             </button>
           ) : (
             <div className="profile-menu">
-              <button className="profile-btn">
+              <button
+                className="profile-btn"
+                onClick={toggleProfileMenu}
+                aria-label="Toggle profile menu"
+                aria-expanded={isProfileOpen}
+              >
                 <img src={assets.profile_icon} alt="Profile" />
               </button>
-              <div className="profile-dropdown">
+              <div
+                className={`profile-dropdown ${isProfileOpen ? "show" : ""}`}
+              >
                 <button
-                  onClick={() => navigate("/myorders")}
+                  onClick={() => {
+                    navigate("/myorders");
+                    setIsProfileOpen(false);
+                  }}
                   className="dropdown-item"
                 >
                   <img src={assets.bag_icon} alt="" />
-                  <span>Orders</span>
+                  <span>My Orders</span>
                 </button>
                 <button onClick={logout} className="dropdown-item">
                   <img src={assets.logout_icon} alt="" />
