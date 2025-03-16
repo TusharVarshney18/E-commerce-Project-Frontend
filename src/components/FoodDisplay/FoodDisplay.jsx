@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 const ITEMS_PER_PAGE = 8; // Number of items to show per page
 
 const FoodDisplay = ({ category }) => {
-  const { food_list } = useContext(StoreContext);
+  const { food_list, addtocart, cartItems } = useContext(StoreContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -56,7 +56,30 @@ const FoodDisplay = ({ category }) => {
                     <span className="food-item-price">
                       ${item.price.toFixed(2)}
                     </span>
-                    <button className="add-to-cart-btn">Add to Cart</button>
+                    {cartItems[item._id] > 0 ? (
+                      <div className="item-counter">
+                        <button
+                          className="counter-btn"
+                          onClick={() => addtocart(item._id, -1)}
+                        >
+                          -
+                        </button>
+                        <span className="count">{cartItems[item._id]}</span>
+                        <button
+                          className="counter-btn"
+                          onClick={() => addtocart(item._id)}
+                        >
+                          +
+                        </button>
+                      </div>
+                    ) : (
+                      <button
+                        className="add-to-cart-btn"
+                        onClick={() => addtocart(item._id)}
+                      >
+                        Add to Cart
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>

@@ -325,8 +325,12 @@
     text-align: center;
   }
 
-  .add-to-cart-btn {
+  .add-to-cart-btn,
+  .item-counter {
     width: 100%;
+  }
+
+  .add-to-cart-btn {
     padding: 0.875rem;
   }
 
@@ -347,6 +351,11 @@
 
   .results-counter {
     font-size: 0.85rem;
+  }
+
+  .item-counter {
+    justify-content: center;
+    padding: 0.75rem;
   }
 }
 
@@ -381,4 +390,45 @@
   .skeleton {
     background: linear-gradient(90deg, #2a2a2a 25%, #333 50%, #2a2a2a 75%);
   }
+}
+
+/* Item Counter */
+.item-counter {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(
+    --accent-gradient,
+    linear-gradient(90deg, #ff4b2b 0%, #ff416c 100%)
+  );
+  padding: 0.5rem;
+  border-radius: 50px;
+}
+
+.counter-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: #ff416c;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.counter-btn:hover {
+  background: white;
+  transform: scale(1.1);
+}
+
+.count {
+  color: white;
+  font-weight: 600;
+  min-width: 20px;
+  text-align: center;
 }
