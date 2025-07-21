@@ -3,7 +3,7 @@ import { assets } from "../../assets/assets";
 
 const Header = () => {
   return (
-    <div className="header">
+    <div className="header parallax-container">
       <video
         className="background-video"
         src={assets.foodvideo}
@@ -12,32 +12,34 @@ const Header = () => {
         muted
         playsInline
       />
-      <div className="header-contents">
+      <div className="overlay-gradient" />
+      <div className="header-contents glass-effect">
         <div className="header-text">
-          <h2>Experience the Art of Fine Dining</h2>
+          <h2>Savor Culinary Excellence</h2>
           <p>
-            Embark on a culinary journey with our expertly crafted dishes. From
-            farm-fresh ingredients to innovative recipes, we bring you an
-            unforgettable dining experience that delights all your senses.
+            Discover an immersive dining experience where innovation meets
+            tradition. Our chefs craft each dish with passion, using only the
+            finest, locally-sourced ingredients. Taste the difference with every
+            bite.
           </p>
           <div className="cta-buttons">
-            <button className="primary-button">View Menu</button>
-            <button className="secondary-button">Book Table</button>
+            <button className="primary-button">Explore Our Menu</button>
+            <button className="secondary-button">Reserve Your Table</button>
           </div>
         </div>
         <div className="header-image">
           <div className="floating-cards">
             <div className="food-card">
-              <h3>Special Offers</h3>
-              <p>Get 20% off on your first order</p>
+              <h3>Exclusive Launch Offer</h3>
+              <p>Enjoy 20% off on your first dine-in or delivery</p>
             </div>
             <div className="food-card">
-              <h3>Chef&apos;s Special</h3>
-              <p>Try our signature dishes</p>
+              <h3>Chef’s Recommendations</h3>
+              <p>Indulge in signature creations curated weekly</p>
             </div>
             <div className="food-card">
-              <h3>Fast Delivery</h3>
-              <p>30 minutes or free</p>
+              <h3>Lightning-Fast Delivery</h3>
+              <p>Fresh, hot, and at your doorstep in under 30 minutes</p>
             </div>
           </div>
         </div>
