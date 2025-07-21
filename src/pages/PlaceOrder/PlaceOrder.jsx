@@ -4,16 +4,11 @@ import { StoreContext } from "../../Context/storeContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY_ID;
+
 const PlaceOrder = () => {
-  const {
-    CartGetTotalAmount,
-    token,
-    food_list,
-    cartItems,
-    setCartItem,
-    url,
-    key,
-  } = useContext(StoreContext);
+  const { CartGetTotalAmount, token, food_list, cartItems, setCartItem, url } =
+    useContext(StoreContext);
 
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -55,9 +50,9 @@ const PlaceOrder = () => {
         }));
 
       const orderData = {
-        userId: token,
         items: orderItems,
         amount: CartGetTotalAmount(),
+        paymentMethod: "online",
         address: {
           firstname: data.firstname,
           lastname: data.lastname,
@@ -68,18 +63,17 @@ const PlaceOrder = () => {
           country: data.country,
           phone: data.phone,
         },
-        paymentMethod: "online",
       };
 
       const response = await axios.post(`${url}/api/order/place`, orderData, {
-        headers: { token },
+        headers: { Authorization: `Bearer ${token}` },
       });
 
       if (response.data.success) {
         const { order: razorpayOrder, orderId } = response.data;
 
         const options = {
-          key: key,
+          key: razorpayKey,
           amount: CartGetTotalAmount() * 100,
           currency: "INR",
           name: "Order Payment",

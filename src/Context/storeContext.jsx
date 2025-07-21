@@ -5,7 +5,10 @@ export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
   const [cartItems, setCartItem] = useState({});
-  const url = "https://e-commerce-project-backend-psi.vercel.app";
+  const url = import.meta.env.DEV
+    ? "http://localhost:4000"
+    : "https://e-commerce-project-backend-psi.vercel.app";
+
   const [token, setToken] = useState("");
   const [food_list, setFoodList] = useState([]);
   const key = import.meta.env.RAZORPAY_KEY_ID;
@@ -20,7 +23,7 @@ const StoreContextProvider = (props) => {
       await axios.post(
         url + "/api/cart/add",
         { itemId },
-        { headers: { token } }
+        { headers: { Authorization: `Bearer ${token}` } }
       );
     }
   };
@@ -51,7 +54,7 @@ const StoreContextProvider = (props) => {
     const response = await axios.post(
       url + "/api/cart/get",
       {},
-      { headers: { token } }
+      { headers: { Authorization: `Bearer ${token}` } }
     );
     setCartItem(response.data.cartData);
   };
