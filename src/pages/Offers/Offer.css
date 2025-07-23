@@ -1,0 +1,105 @@
+.offer-section {
+  padding: 4rem 2rem;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.4)
+    ),
+    url("https://cdn.pixabay.com/photo/2016/11/19/11/38/avocado-1838785_1280.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+}
+
+.offer-heading {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #0a1930;
+}
+
+.offer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.offer-card {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.offer-card:hover {
+  transform: translateY(-5px);
+}
+
+.offer-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.offer-info {
+  padding: 1.2rem;
+}
+
+.offer-info h3 {
+  font-size: 1.3rem;
+  color: #ff5722;
+  margin-bottom: 0.5rem;
+}
+
+.offer-info p {
+  color: #333;
+  font-size: 1rem;
+}
+
+.offer-filter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.offer-filter button {
+  padding: 0.6rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 999px;
+  background-color: #e5e7eb; /* neutral gray */
+  color: #1f2937;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.offer-filter button:hover {
+  background-color: #ff5722;
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+.offer-filter button.active {
+  background-color: #ff5722;
+  color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+}
+
+.marquee-coupon {
+  background: linear-gradient(90deg, #facc15, #fcd34d);
+  color: #1f2937;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  margin: 1rem auto 2rem auto;
+  max-width: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}

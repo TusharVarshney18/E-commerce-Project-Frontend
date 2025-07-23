@@ -1,0 +1,120 @@
+.contact-section {
+  background: url("https://images.unsplash.com/photo-1551782450-a2132b4ba21d")
+    no-repeat center center/cover;
+  padding: 6rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  min-height: 100vh;
+}
+
+.contact-wrapper {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  max-width: 600px;
+  width: 100%;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  color: #fff;
+}
+
+.contact-title {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.contact-subtitle {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color: #e2e2e2;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+}
+
+.input-group label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: #ccc;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label,
+.input-group textarea:focus + label,
+.input-group textarea:not(:placeholder-shown) + label {
+  top: -0.7rem;
+  left: 0.9rem;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0 0.3rem;
+  font-size: 0.75rem;
+  color: #ff4743;
+  border-radius: 5px;
+}
+
+.submit-btn {
+  background-color: #ff4743;
+  color: #000;
+  font-weight: bold;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #01dada;
+}
+
+.social-icons {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.social-icons a {
+  color: #fff;
+  font-size: 1.4rem;
+  transition: 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #00ffff;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .contact-title {
+    font-size: 2rem;
+  }
+  .contact-wrapper {
+    padding: 2rem 1.5rem;
+  }
+}
