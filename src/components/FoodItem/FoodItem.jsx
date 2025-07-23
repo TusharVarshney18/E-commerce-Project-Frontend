@@ -1,29 +1,38 @@
+"use client";
+
 import React, { useContext } from "react";
 import "./Fooditem.css";
 import { assets } from "../../assets/assets";
 import { StoreContext } from "../../Context/storeContext";
+import { motion } from "framer-motion";
 
-const FoodItem = ({ id, name, price, description, image }) => {
+const FoodItem = ({ id, name, price, description = "", image = "" }) => {
   const { cartItems, addtocart, Removefromcart, url } =
     useContext(StoreContext);
 
-  // Set max description length and handle truncation
   const maxDescriptionLength = 100;
   const truncatedDescription =
     description.length > maxDescriptionLength
       ? `${description.slice(0, maxDescriptionLength)}...`
       : description;
 
-  // Check if item is in the cart
   const isInCart = cartItems[id] > 0;
+  const imageUrl = image.startsWith("http") ? image : `${url}/images/${image}`;
 
   return (
-    <div className="Food-item">
+    <motion.div
+      className="food-item"
+      whileHover={{ scale: 1.03 }}
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+    >
       <div className="food-item-img-container">
         <img
           className="food-item-image"
-          src={image.startsWith("http") ? image : `${url}/images/${image}`}
-          alt={`${name} image`}
+          src={imageUrl}
+          alt={`${name || "Food"} image`}
+          loading="lazy"
         />
 
         {!isInCart ? (
@@ -52,13 +61,13 @@ const FoodItem = ({ id, name, price, description, image }) => {
 
       <div className="food-item-info">
         <div className="food-item-name-rating">
-          <p>{name}</p>
+          <p className="food-item-title">{name}</p>
           <img src={assets.rating_starts} alt="Rating stars" />
         </div>
-        <p className="food-item-dis">{truncatedDescription}</p>
-        <p className="food-item-price">${price}</p>
+        <p className="food-item-desc">{truncatedDescription}</p>
+        <p className="food-item-price">₹{price}</p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
