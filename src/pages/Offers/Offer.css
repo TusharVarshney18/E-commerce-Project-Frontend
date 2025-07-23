@@ -1,21 +1,24 @@
 .offer-section {
-  padding: 4rem 2rem;
+  padding: 4rem 1.5rem;
   background: linear-gradient(
-      rgba(255, 255, 255, 0.4),
-      rgba(255, 255, 255, 0.4)
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.7)
     ),
-    url("https://cdn.pixabay.com/photo/2016/11/19/11/38/avocado-1838785_1280.jpg");
+    url("https://cdn.pixabay.com/photo/2021/11/11/16/06/women-6786612_1280.jpg"); /* Calm hunger-themed image */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   text-align: center;
   font-family: "Inter", sans-serif;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .offer-heading {
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
   margin-bottom: 2rem;
   color: #0a1930;
+  font-weight: 700;
 }
 
 .offer-grid {
@@ -31,11 +34,12 @@
   border-radius: 20px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .offer-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 .offer-card img {
@@ -57,6 +61,7 @@
 .offer-info p {
   color: #333;
   font-size: 1rem;
+  line-height: 1.5;
 }
 
 .offer-filter {
@@ -64,7 +69,7 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .offer-filter button {
@@ -73,7 +78,7 @@
   font-weight: 600;
   border: none;
   border-radius: 999px;
-  background-color: #e5e7eb; /* neutral gray */
+  background-color: #e5e7eb;
   color: #1f2937;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
@@ -88,7 +93,7 @@
 .offer-filter button.active {
   background-color: #ff5722;
   color: #ffffff;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.3);
 }
 
 .marquee-coupon {
@@ -102,4 +107,10 @@
   max-width: 100%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-coupon marquee {
+  font-size: clamp(1rem, 4vw, 1.2rem);
+  animation: scroll 20s linear infinite;
 }
