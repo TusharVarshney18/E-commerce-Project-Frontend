@@ -1,50 +1,55 @@
+"use client";
+
+import { motion } from "framer-motion";
 import "./Header.css";
-import { assets } from "../../assets/assets";
 
 const Header = () => {
   return (
-    <div className="header parallax-container">
-      <video
-        className="background-video"
-        src={assets.foodvideo}
-        autoPlay
-        loop
-        muted
-        playsInline
-      />
-      <div className="overlay-gradient" />
-      <div className="header-contents glass-effect">
-        <div className="header-text">
-          <h2>Savor Culinary Excellence</h2>
-          <p>
-            Discover an immersive dining experience where innovation meets
-            tradition. Our chefs craft each dish with passion, using only the
-            finest, locally-sourced ingredients. Taste the difference with every
-            bite.
-          </p>
-          <div className="cta-buttons">
-            <button className="primary-button">Explore Our Menu</button>
-            <button className="secondary-button">Reserve Your Table</button>
-          </div>
-        </div>
-        <div className="header-image">
-          <div className="floating-cards">
-            <div className="food-card">
-              <h3>Exclusive Launch Offer</h3>
-              <p>Enjoy 20% off on your first dine-in or delivery</p>
-            </div>
-            <div className="food-card">
-              <h3>Chef’s Recommendations</h3>
-              <p>Indulge in signature creations curated weekly</p>
-            </div>
-            <div className="food-card">
-              <h3>Lightning-Fast Delivery</h3>
-              <p>Fresh, hot, and at your doorstep in under 30 minutes</p>
-            </div>
-          </div>
+    <section className="header-section">
+      {/* Blurred Background Video */}
+      <div className="header-bg">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="header-video"
+          src="https://cdn.pixabay.com/video/2020/03/05/33256-396487978_large.mp4" // Replace with your video
+        />
+      </div>
+
+      {/* Overlay content */}
+      <div className="header-overlay">
+        <div className="header-content">
+          <motion.h1
+            initial={{ x: -60, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            Premium Food, Delivered Fast
+          </motion.h1>
+
+          <motion.p
+            initial={{ x: -40, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
+            Craving something delicious? Get chef-crafted meals delivered hot &
+            fresh at your doorstep.
+          </motion.p>
+
+          <motion.div
+            className="header-buttons"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.4 }}
+          >
+            <button className="primary-btn">Order Now</button>
+            <button className="secondary-btn">View Menu</button>
+          </motion.div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
