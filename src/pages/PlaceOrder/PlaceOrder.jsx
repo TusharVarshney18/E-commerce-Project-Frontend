@@ -136,9 +136,6 @@ const PlaceOrder = () => {
 
         <div className="multiple-fields">
           <div className="input-group">
-            <label className="input-label" htmlFor="firstname">
-              First Name
-            </label>
             <input
               required
               id="firstname"
@@ -150,9 +147,6 @@ const PlaceOrder = () => {
             />
           </div>
           <div className="input-group">
-            <label className="input-label" htmlFor="lastname">
-              Last Name
-            </label>
             <input
               required
               id="lastname"
@@ -166,9 +160,6 @@ const PlaceOrder = () => {
         </div>
 
         <div className="input-group">
-          <label className="input-label" htmlFor="email">
-            Email Address
-          </label>
           <input
             required
             id="email"
@@ -181,9 +172,6 @@ const PlaceOrder = () => {
         </div>
 
         <div className="input-group">
-          <label className="input-label" htmlFor="street">
-            Street Address
-          </label>
           <input
             required
             id="street"
@@ -197,9 +185,6 @@ const PlaceOrder = () => {
 
         <div className="multiple-fields">
           <div className="input-group">
-            <label className="input-label" htmlFor="city">
-              City
-            </label>
             <input
               required
               id="city"
@@ -211,9 +196,6 @@ const PlaceOrder = () => {
             />
           </div>
           <div className="input-group">
-            <label className="input-label" htmlFor="state">
-              State
-            </label>
             <input
               required
               id="state"
@@ -228,9 +210,6 @@ const PlaceOrder = () => {
 
         <div className="multiple-fields">
           <div className="input-group">
-            <label className="input-label" htmlFor="zipcode">
-              ZIP Code
-            </label>
             <input
               required
               id="zipcode"
@@ -242,9 +221,6 @@ const PlaceOrder = () => {
             />
           </div>
           <div className="input-group">
-            <label className="input-label" htmlFor="country">
-              Country
-            </label>
             <input
               required
               id="country"
@@ -258,9 +234,6 @@ const PlaceOrder = () => {
         </div>
 
         <div className="input-group">
-          <label className="input-label" htmlFor="phone">
-            Phone Number
-          </label>
           <input
             required
             id="phone"
