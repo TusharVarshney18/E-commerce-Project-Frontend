@@ -3,10 +3,9 @@
 .place-order-section {
   background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
   color: #ffffff;
-  padding: 3rem 1.5rem;
+  padding: 6rem 1.5rem 3rem; /* More top padding for navbar overlap */
   min-height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
@@ -59,11 +58,11 @@
 .input-group {
   display: flex;
   flex-direction: column;
+  gap: 0.4rem;
 }
 
 .input-group label {
   font-size: 0.95rem;
-  margin-bottom: 0.3rem;
   color: #e0e0e0;
 }
 
@@ -78,7 +77,12 @@
   color: #fff;
   outline: none;
   resize: none;
+  min-height: 48px;
   transition: background-color 0.3s ease;
+}
+
+.input-group textarea {
+  min-height: 120px;
 }
 
 .input-group input::placeholder,
@@ -95,8 +99,8 @@
 /* Multiple Fields (Side-by-Side) */
 .multiple-fields {
   display: flex;
-  gap: 1rem;
   flex-wrap: wrap;
+  gap: 1.2rem;
 }
 
 .multiple-fields .input-group {
@@ -114,6 +118,7 @@
   color: #fff;
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
+  margin-top: 1rem;
 }
 
 .submit-btn:hover {
@@ -142,16 +147,8 @@
     padding: 1.5rem;
   }
 
-  .multiple-fields .input-group {
-    flex: 1 1 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .place-order-container {
-    flex-direction: column;
-    margin-top: 1.5rem;
-    padding: 0.5rem;
+  .place-order-section {
+    padding: 7rem 1rem 3rem; /* More top padding */
   }
 
   .multiple-fields .input-group {
