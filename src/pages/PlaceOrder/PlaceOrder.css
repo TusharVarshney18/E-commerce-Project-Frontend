@@ -146,3 +146,15 @@
     flex: 1 1 100%;
   }
 }
+
+@media (max-width: 480px) {
+  .place-order-container {
+    flex-direction: column;
+    margin-top: 1.5rem;
+    padding: 0.5rem;
+  }
+
+  .multiple-fields .input-group {
+    flex: 1 1 100%;
+  }
+}
