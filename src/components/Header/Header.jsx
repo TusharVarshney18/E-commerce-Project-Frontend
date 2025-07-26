@@ -16,6 +16,12 @@ const Header = () => {
           className="header-video"
           src="https://cdn.pixabay.com/video/2020/03/05/33256-396487978_large.mp4" // Replace with your video
         />
+
+        <img
+          src="https://i.pinimg.com/originals/e2/56/85/e25685798124d13d26ad06168ca745d8.jpg"
+          alt="Mobile Background"
+          className="mobile-only header-image"
+        />
       </div>
 
       {/* Overlay content */}

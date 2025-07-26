@@ -139,11 +139,11 @@ const Offer = () => {
     <>
       <div className="offer-section">
         <div className="marquee-coupon">
-          <marquee behavior="scroll" direction="left" scrollamount="6">
+          <span>
             🎉 Use Code <strong>FOODIE50</strong> to Get{" "}
             <strong>50% OFF</strong> on Your First Order! 🍔🍕 Limited Time
             Only! 🎉
-          </marquee>
+          </span>
         </div>
 
         <h2 className="offer-heading">🔥 Today's Special Offers</h2>

@@ -13,9 +13,9 @@ const Footer = () => {
         {/* Logo Section */}
         <div className="footer-logo-section">
           <div className="footer-logo">
-            <img src={assets.logo} alt="FoodieHub Logo" />
             <h3>FoodieHub</h3>
           </div>
+
           <p className="footer-about">
             Discover the best food and drinks in your area. We make it easy to
             find the perfect dish for any occasion.
@@ -26,9 +26,6 @@ const Footer = () => {
             </a>
             <a href="#" className="social-icon">
               <img src={assets.twitter_icon} alt="Twitter" />
-            </a>
-            <a href="#" className="social-icon">
-              <img src={assets.instagram_icon} alt="Instagram" />
             </a>
           </div>
         </div>

@@ -1,25 +1,80 @@
-.App-download {
-  margin: auto, auto;
-  margin-top: 100px;
-  font-size: max(3vw, 20px);
-  text-align: center;
-  font-weight: 500;
+.app-download {
+  width: 100%;
+  min-height: 50vh;
+  background: url("https://images.pexels.com/photos/406152/pexels-photo-406152.jpeg")
+    center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  position: relative;
+  overflow: hidden;
 }
 
-.App-download-platforms {
+.app-download::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.app-download-glass {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  width: 100%;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.app-download-glass h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.app-download-glass p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.app-download-platforms {
   display: flex;
   justify-content: center;
-  gap: max(2vw, 10px);
-  margin-top: 40px;
+  gap: 1.2rem;
+  flex-wrap: wrap;
 }
 
-.App-download-platforms img {
-  width: max(30vw, 120px);
-  max-width: 180px;
-  transition: 0.5s;
+.app-download-platforms img {
+  width: 160px;
+  height: auto;
+  transition: transform 0.3s ease;
   cursor: pointer;
 }
 
-.App-download-platforms img:hover {
+.app-download-platforms img:hover {
   transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app-download-glass h2 {
+    font-size: 1.5rem;
+  }
+
+  .app-download-glass p {
+    font-size: 1rem;
+  }
+
+  .app-download-platforms img {
+    width: 140px;
+  }
 }
