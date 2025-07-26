@@ -31,6 +31,15 @@
   align-items: center;
 }
 
+.logo-text {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ff4d4f; /* Customize this color */
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
 .navbar-logo img {
   height: 45px;
   width: auto;

@@ -49,7 +49,7 @@ const Navbar = ({ setShowLogin }) => {
     <nav className={`navbar ${isMobileMenuOpen ? "mobile-open" : ""}`}>
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-          <img src={assets.logoIcon} alt="Logo" />
+          <span className="logo-text">FoodieHub</span>
         </Link>
 
         <div className={`navbar-menu ${isMobileMenuOpen ? "show" : ""}`}>
